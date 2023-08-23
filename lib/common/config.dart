@@ -21,7 +21,6 @@ Future<void> _initBack4Apps() async {
     appID,
     serverUrl,
     clientKey: clientKey,
-    // debug: kDebugMode,
   );
 }
 
