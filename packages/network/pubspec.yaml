@@ -1,0 +1,28 @@
+name: network
+description: A new Flutter package project.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.0.0
+  dio_refresh_bot:
+    git:
+      url: https://github.com/flutterbots/flutterbots
+      path: packages/dio_refresh_bot
+  bot_storage: ^1.0.5
+  core:
+    path: ../core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  freezed: ^2.3.2
+  build_runner: ^2.3.3
+flutter:

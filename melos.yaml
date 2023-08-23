@@ -1,0 +1,37 @@
+name: NY_Times
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run `dart analyze` in all packages.
+
+  format: melos exec -- "flutter format . -l 120"
+
+  fix_hints: melos exec -- "dart fix —apply ."
+
+  build_runner:
+    run:
+      melos exec  -- flutter pub run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      depends-on: build_runner
+
+  build_release:
+    run: flutter build apk
+
+
+  pub_get:
+    run: melos exec -- flutter pub get
+
+  pub_upgrade:
+    run: melos exec -- flutter pub upgrade
+
+  clean:
+    run: melos exec -- flutter clean
+
+  spider:
+    run: |
+      melos exec  --scope="*p_design*" -- spider build
+

@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "app_name": "Medboss",
+  "@app_name": {},
+  "empty_page": "No data found",
+  "@empty_page": {},
+  "details_title": "Article Details",
+  "@details_title": {},
+  "error_something_wrong": "Something wrong happened, if this persists please submit a help request.",
+  "@error_something_wrong": {},
+  "error_internet_issue": "Looks like your internet is unstable, and your application is facing connectivity issues.",
+  "@error_internet_issue": {},
+  "error_unable_to_load": "Due to this error, we were unable to load the requested data.",
+  "@error_unable_to_load": {},
+  "retry": "Retry",
+  "@retry": {}
+}
