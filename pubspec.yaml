@@ -1,6 +1,6 @@
 name: medboss
 description: A new Flutter project.
-version: 0.0.1+9
+version: 0.0.2+10
 
 environment:
   sdk: '>=2.19.6 <3.0.0'

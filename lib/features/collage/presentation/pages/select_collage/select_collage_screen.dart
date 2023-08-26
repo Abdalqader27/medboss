@@ -35,45 +35,41 @@ class SelectCollageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<SelectCollageProvider>();
-    return RewardedAds(
-      child: AppBanner(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('اختر الكلية'),
-          ),
-          body: RefreshIndicator(
-            onRefresh: () async {
-              provider.fetchCollages(FetchPolicy.cacheAndNetwork);
-            },
-            child: PageStateBuilder(
-              state: provider.pageState,
-              success: (data) {
-                return AnimationLimiter(
-                  child: ListView.separated(
-                    padding: EdgeInsetsConstrains.listView,
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      final collage = data[index];
-                      return AnimationConfiguration.staggeredList(
-                        position: index,
-                        duration: const Duration(milliseconds: 375),
-                        child: SlideAnimation(
-                          verticalOffset: 50.0,
-                          child: FadeInAnimation(
-                            child: _CollageItem(collage: collage),
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return Space.vxs;
-                    },
-                  ),
-                );
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('اختر الكلية'),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          provider.fetchCollages(FetchPolicy.cacheAndNetwork);
+        },
+        child: PageStateBuilder(
+          state: provider.pageState,
+          success: (data) {
+            return AnimationLimiter(
+              child: ListView.separated(
+                padding: EdgeInsetsConstrains.listView,
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final collage = data[index];
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 375),
+                    child: SlideAnimation(
+                      verticalOffset: 50.0,
+                      child: FadeInAnimation(
+                        child: _CollageItem(collage: collage),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return Space.vxs;
+                },
+              ),
+            );
 
-              },
-            ),
-          ),
+          },
         ),
       ),
     );

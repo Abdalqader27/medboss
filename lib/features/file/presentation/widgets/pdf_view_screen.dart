@@ -65,37 +65,34 @@ class _PdfViewScreenState extends State<PdfViewScreen>
 
   @override
   Widget build(BuildContext context) {
-    return AppBanner(
-      child: RewardedAds(
-        child: Scaffold(
-          body: SafeArea(
-            child: Stack(
-              children: [
-                PDF(
-                  nightMode: Theme.of(context).brightness == Brightness.dark,
-                  swipeHorizontal: _isLandscape(),
-                  enableSwipe: true,
-                  fitEachPage: true,
-                  pageSnap: false,
-                  preventLinkNavigation: false,
-                  pageFling: _isLandscape(),
-                  defaultPage: getSavedPageNumber(),
-                  onPageChanged: (int? page, int? total) {
-                    savePageNumber(page ?? 0);
-                  },
-                  onViewCreated: (PDFViewController controller) {},
-                ).cachedFromUrl(
-                  widget.file.myFile,
-                ),
-                SizedBox(
-                  height: kToolbarHeight,
-                  child: AppBar(
-                    elevation: 0,
-                  ),
-                ),
-              ],
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            PDF(
+              nightMode: Theme.of(context).brightness == Brightness.dark,
+              swipeHorizontal: _isLandscape(),
+              enableSwipe: true,
+              fitEachPage: true,
+              pageSnap: false,
+
+              preventLinkNavigation: false,
+              pageFling: _isLandscape(),
+              defaultPage: getSavedPageNumber(),
+              onPageChanged: (int? page, int? total) {
+                savePageNumber(page ?? 0);
+              },
+              onViewCreated: (PDFViewController controller) {},
+            ).cachedFromUrl(
+              widget.file.myFile,
             ),
-          ),
+            SizedBox(
+              height: kToolbarHeight,
+              child: AppBar(
+                elevation: 0,
+              ),
+            ),
+          ],
         ),
       ),
     );

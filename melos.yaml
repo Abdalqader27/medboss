@@ -19,7 +19,8 @@ scripts:
       depends-on: build_runner
 
   build_release:
-    run: flutter build apk
+    run: flutter build appbundle
+
 
 
   pub_get:

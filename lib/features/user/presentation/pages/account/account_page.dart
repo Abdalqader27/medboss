@@ -22,14 +22,12 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBanner(
-      child: Column(
-        children: [
+    return Column(
+      children: [
 
-          ProfileScreen(),
-          Expanded(child: SelectCollageScreen()),
-        ],
-      ),
+        ProfileScreen(),
+        Expanded(child: SelectCollageScreen()),
+      ],
     );
   }
 }

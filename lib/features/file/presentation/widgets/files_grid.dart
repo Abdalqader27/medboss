@@ -129,44 +129,51 @@ class _FilesGridState extends State<FilesGrid> {
     }
 
     if (isPurchase) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('أختر كيفية العرض'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              FilledButton.tonal(
-                  onPressed: () {
-                    context.pop();
-                    context.push(
-                      PdfViewScreen.path,
-                      extra: {
-                        'fileName': file.name,
-                        'file': file,
-                      },
-                    );
-                  },
-                  child: Text('ملف')),
-              FilledButton.tonal(
-                onPressed: () {
-                  context.pop();
-                  context.push(
-                    BetaPdfViewScreen.path,
-                    extra: {
-                      'fileName': file.name,
-                      'file': file,
-                    },
-                  );
-
-                },
-                child: Text('ملف مع ادوات (beta)'),
-              ),
-            ],
-          ),
-        ),
+      context.push(
+        PdfViewScreen.path,
+        extra: {
+          'fileName': file.name,
+          'file': file,
+        },
       );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) => AlertDialog(
+      //     title: const Text('أختر كيفية العرض'),
+      //     content: Column(
+      //       mainAxisSize: MainAxisSize.min,
+      //       crossAxisAlignment: CrossAxisAlignment.stretch,
+      //       children: [
+      //         FilledButton.tonal(
+      //             onPressed: () {
+      //               context.pop();
+      //               context.push(
+      //                 PdfViewScreen.path,
+      //                 extra: {
+      //                   'fileName': file.name,
+      //                   'file': file,
+      //                 },
+      //               );
+      //             },
+      //             child: Text('ملف')),
+      //         FilledButton.tonal(
+      //           onPressed: () {
+      //             context.pop();
+      //             context.push(
+      //               BetaPdfViewScreen.path,
+      //               extra: {
+      //                 'fileName': file.name,
+      //                 'file': file,
+      //               },
+      //             );
+      //
+      //           },
+      //           child: Text('ملف مع ادوات (beta)'),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // );
     } else {
       dialogContent(
         file,

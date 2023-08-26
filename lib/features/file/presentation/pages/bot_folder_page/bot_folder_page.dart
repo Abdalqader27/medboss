@@ -44,86 +44,82 @@ class _BotFolderPageState extends State<BotFolderPage> {
     final db = sl<AppDatabase>();
     final stream = sl<SelectCollageStream>();
 
-    return InterstitialAds(
-      child: AppBanner(
-        child: StreamBuilder(
-            stream: stream.collageStream,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const AppLoading();
-              }
-              if (!snapshot.hasData) {
-                return const NotSelectedCollageWidget();
-              }
-              return MultiProvider(
-                providers: [
-                  Provider(create: (context) => db.filesDao),
-                  Provider(create: (context) => db.foldersDao),
-                  Provider(create: (context) => db.purchasesDao),
-                ],
-                child: ChangeNotifierProvider.value(
-                  value: BotFilesProvider(db),
-                  child: Scaffold(
-                    backgroundColor: Colors.transparent,
-                    body: SafeArea(
-                      child: Padding(
-                        padding: EdgeInsetsConstrains.listView,
-                        child: Consumer<BotFilesProvider>(
-                          builder: (context, botFiles, child) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Expanded(
-                                  child: RefreshIndicator(
-                                    onRefresh: () => _refresh(
-                                        context.read<BotFilesProvider>()),
-                                    child: AnimatedSwitcher(
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      child: botFiles.loadingUFolder
-                                          ? const AppLoading()
-                                          : Column(
-                                              children: [
-                                                Visibility(
-                                                  visible:
-                                                      botFiles.last != null,
-                                                  child: Header(),
-                                                ),
-                                                Space.vl,
-                                                Expanded(
-                                                  flex: 2,
-                                                  child: AnimatedSwitcher(
-                                                    duration: const Duration(
-                                                        milliseconds: 300),
-                                                    child: botFiles.last != null
-                                                        ? FilesGrid(
-                                                            key: Key(botFiles
-                                                                .list
-                                                                .last
-                                                                .name),
-                                                            folder: (botFiles
-                                                                .last!),
-                                                          )
-                                                        : const EmptyUniversityFolder(),
-                                                  ),
-                                                ),
-                                              ],
+    return StreamBuilder(
+        stream: stream.collageStream,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const AppLoading();
+          }
+          if (!snapshot.hasData) {
+            return const NotSelectedCollageWidget();
+          }
+          return MultiProvider(
+            providers: [
+              Provider(create: (context) => db.filesDao),
+              Provider(create: (context) => db.foldersDao),
+              Provider(create: (context) => db.purchasesDao),
+            ],
+            child: ChangeNotifierProvider.value(
+              value: BotFilesProvider(db),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: SafeArea(
+                  child: Padding(
+                    padding: EdgeInsetsConstrains.listView,
+                    child: Consumer<BotFilesProvider>(
+                      builder: (context, botFiles, child) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(
+                              child: RefreshIndicator(
+                                onRefresh: () => _refresh(
+                                    context.read<BotFilesProvider>()),
+                                child: AnimatedSwitcher(
+                                  duration:
+                                      const Duration(milliseconds: 300),
+                                  child: botFiles.loadingUFolder
+                                      ? const AppLoading()
+                                      : Column(
+                                          children: [
+                                            Visibility(
+                                              visible:
+                                                  botFiles.last != null,
+                                              child: Header(),
                                             ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                      ),
+                                            Space.vl,
+                                            Expanded(
+                                              flex: 2,
+                                              child: AnimatedSwitcher(
+                                                duration: const Duration(
+                                                    milliseconds: 300),
+                                                child: botFiles.last != null
+                                                    ? FilesGrid(
+                                                        key: Key(botFiles
+                                                            .list
+                                                            .last
+                                                            .name),
+                                                        folder: (botFiles
+                                                            .last!),
+                                                      )
+                                                    : const EmptyUniversityFolder(),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),
-              );
-            }),
-      ),
-    );
+              ),
+            ),
+          );
+        });
   }
 
   Future<void> _refresh(provider) async {

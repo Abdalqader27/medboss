@@ -22,33 +22,31 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return RewardedAds(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('عن التطبيق'),
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsetsConstrains.listView,
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                theme.brightness == Brightness.light
-                    ? LogoRes.lightLogo
-                    : LogoRes.darkLogo,
-                height: 200,
-                width: 200,
-              ),
-              Space.vl,
-              const YouText.bodyMedium(
-                "فريق مكون من مجموعة من الخريجين الاوائل على مستوى القطر بهدف تأمين مصادر دراسية كافية وموثوقة للامتحان الوطني",
-                textAlign: TextAlign.center,
-              ),
-              const YouText.bodyMedium(
-                "التطبيق يتيح إمكانية الدراسة الكترونياً PDF بسلاسة وسهولة لجميع أعمال وإصدارات الفريق نتمنى لكم تجربة ممتعة ودراسة موفقة ❤️❤️",
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('عن التطبيق'),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsetsConstrains.listView,
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              theme.brightness == Brightness.light
+                  ? LogoRes.lightLogo
+                  : LogoRes.darkLogo,
+              height: 200,
+              width: 200,
+            ),
+            Space.vl,
+            const YouText.bodyMedium(
+              "فريق مكون من مجموعة من الخريجين الاوائل على مستوى القطر بهدف تأمين مصادر دراسية كافية وموثوقة للامتحان الوطني",
+              textAlign: TextAlign.center,
+            ),
+            const YouText.bodyMedium(
+              "التطبيق يتيح إمكانية الدراسة الكترونياً PDF بسلاسة وسهولة لجميع أعمال وإصدارات الفريق نتمنى لكم تجربة ممتعة ودراسة موفقة ❤️❤️",
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

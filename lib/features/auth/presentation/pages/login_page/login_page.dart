@@ -59,119 +59,117 @@ class _LoginPageState extends State<LoginPage> {
 
     final loginBloc = context.read<LoginBloc>();
 
-    return AppBanner(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'التسجيل الدخول',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'التسجيل الدخول',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              AdaptiveTheme.of(context).toggleThemeMode();
+            },
+            icon: const Icon(
+              Icons.dark_mode_outlined,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                AdaptiveTheme.of(context).toggleThemeMode();
-              },
-              icon: const Icon(
-                Icons.dark_mode_outlined,
-              ),
-            ),
-          ],
-        ),
-        body: BlocListener<LoginBloc, LoginState>(
-          listener: _listener,
-          child: ReactiveForm(
-            formGroup: loginBloc.form,
-            child: Stack(
-              children: [
-                SingleChildScrollView(
-                  padding: EdgeInsetsConstrains.listView,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      KeyboardVisibilityBuilder(
-                        closed: () => Space.vxl,
-                        open: () => Space.vxs,
+        ],
+      ),
+      body: BlocListener<LoginBloc, LoginState>(
+        listener: _listener,
+        child: ReactiveForm(
+          formGroup: loginBloc.form,
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                padding: EdgeInsetsConstrains.listView,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    KeyboardVisibilityBuilder(
+                      closed: () => Space.vxl,
+                      open: () => Space.vxs,
+                    ),
+                    Hero(
+                      tag: JsonRes.secureLogin,
+                      child: Lottie.asset(
+                        JsonRes.secureLogin,
+                        height: 300,
+                        width: 200,
                       ),
-                      Hero(
-                        tag: JsonRes.secureLogin,
-                        child: Lottie.asset(
-                          JsonRes.secureLogin,
-                          height: 300,
-                          width: 200,
-                        ),
-                      ),
-                      KeyboardVisibilityBuilder(
-                        closed: () => Space.vxl,
-                        open: () => Space.vxs,
-                      ),
-                      Column(
-                        children: [
-                          Directionality(
-                            textDirection: TextDirection.ltr,
-                            child: Padding(
-                              padding: EdgeInsetsConstrains.textFiled,
-                              child: ReactiveIntlPhoneFormField(
-                                formControlName:
-                                    LoginBloc.phoneNumberControllerName,
-                                validationMessages: _phoneValidationMessage(),
-                                hintText: 'رقم الهاتف',
-                                textDirection: TextDirection.ltr,
-                                textAlign: TextAlign.right,
-                              ),
-                            ),
-                          ),
-                          Padding(
+                    ),
+                    KeyboardVisibilityBuilder(
+                      closed: () => Space.vxl,
+                      open: () => Space.vxs,
+                    ),
+                    Column(
+                      children: [
+                        Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: Padding(
                             padding: EdgeInsetsConstrains.textFiled,
-                            child: CustomReactiveTextField(
-                              validationMessages: {
-                                ValidationMessage.required: (_) =>
-                                    'هذا الحقل مطلوب',
-                              },
-                              hintText: 'كلمة المرور',
-                              prefix: IconlyBroken.password,
-                              formControlName: LoginBloc.passwordControllerName,
+                            child: ReactiveIntlPhoneFormField(
+                              formControlName:
+                                  LoginBloc.phoneNumberControllerName,
+                              validationMessages: _phoneValidationMessage(),
+                              hintText: 'رقم الهاتف',
+                              textDirection: TextDirection.ltr,
+                              textAlign: TextAlign.right,
                             ),
                           ),
-                        ],
-                      ),
-                      KeyboardVisibilityBuilder(
-                        closed: () => Space.vl,
-                        open: () => Space.vxs,
-                      ),
-                      Padding(
-                        padding: EdgeInsetsConstrains.textFiled,
-                        child: FilledButton(
-                          onPressed: () {
-                            _onLoginPressed(context);
-                          },
-                          child: const Text(
-                            'تسجيل الدخول',
+                        ),
+                        Padding(
+                          padding: EdgeInsetsConstrains.textFiled,
+                          child: CustomReactiveTextField(
+                            validationMessages: {
+                              ValidationMessage.required: (_) =>
+                                  'هذا الحقل مطلوب',
+                            },
+                            hintText: 'كلمة المرور',
+                            prefix: IconlyBroken.password,
+                            formControlName: LoginBloc.passwordControllerName,
                           ),
                         ),
+                      ],
+                    ),
+                    KeyboardVisibilityBuilder(
+                      closed: () => Space.vl,
+                      open: () => Space.vxs,
+                    ),
+                    Padding(
+                      padding: EdgeInsetsConstrains.textFiled,
+                      child: FilledButton(
+                        onPressed: () {
+                          _onLoginPressed(context);
+                        },
+                        child: const Text(
+                          'تسجيل الدخول',
+                        ),
                       ),
-                      Space.vm,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const YouText.labelLarge(
-                            'ليس لديك حساب ؟',
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              context.push(SignUpScreen.path);
-                            },
-                            child: const Text('انشاء حساب'),
-                          ),
-                        ].addSpacing(Space.hs),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Space.vm,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const YouText.labelLarge(
+                          'ليس لديك حساب ؟',
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () {
+                            context.push(SignUpScreen.path);
+                          },
+                          child: const Text('انشاء حساب'),
+                        ),
+                      ].addSpacing(Space.hs),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

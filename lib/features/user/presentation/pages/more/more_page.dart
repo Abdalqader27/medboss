@@ -27,64 +27,62 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBanner(
-      child: SingleChildScrollView(
-        padding: EdgeInsetsConstrains.listView,
-        child: Column(
-          children: [
-            Card(
-              child: ListTile(
-                leading: const Icon(IconlyLight.scan),
-                trailing: const Icon(IconlyLight.arrow_left_2),
-                title: const Text('تحديد الكلية'),
-                onTap: () {
-                  context.push(SelectCollageScreen.path);
-                },
-              ),
+    return SingleChildScrollView(
+      padding: EdgeInsetsConstrains.listView,
+      child: Column(
+        children: [
+          Card(
+            child: ListTile(
+              leading: const Icon(IconlyLight.scan),
+              trailing: const Icon(IconlyLight.arrow_left_2),
+              title: const Text('تحديد الكلية'),
+              onTap: () {
+                context.push(SelectCollageScreen.path);
+              },
             ),
-            Card(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: const Icon(IconlyLight.setting),
-                    trailing: const Icon(IconlyLight.arrow_left_2),
-                    title: const Text('الاعدادات'),
-                    onTap: () {
-                      context.push(SettingsScreen.path);
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(IconlyLight.send),
-                    trailing: const Icon(IconlyLight.arrow_left_2),
-                    title: const Text('مشاركة التطبيق'),
-                    onTap: () async {
-                      Share.share(
-                          'Try to download the app from => https://play.google.com/store/apps/details?id=com.abdalqader27.medboss');
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(IconlyLight.paper_plus),
-                    trailing: const Icon(IconlyLight.arrow_left_2),
-                    title: const Text('نقاط البيع'),
-                    onTap: () {
-                      _showStorePlace(context);
-                    },
-                  ),
-                ],
-              ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(IconlyLight.setting),
+                  trailing: const Icon(IconlyLight.arrow_left_2),
+                  title: const Text('الاعدادات'),
+                  onTap: () {
+                    context.push(SettingsScreen.path);
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(IconlyLight.send),
+                  trailing: const Icon(IconlyLight.arrow_left_2),
+                  title: const Text('مشاركة التطبيق'),
+                  onTap: () async {
+                    Share.share(
+                        'Try to download the app from => https://play.google.com/store/apps/details?id=com.abdalqader27.medboss');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(IconlyLight.paper_plus),
+                  trailing: const Icon(IconlyLight.arrow_left_2),
+                  title: const Text('نقاط البيع'),
+                  onTap: () {
+                    _showStorePlace(context);
+                  },
+                ),
+              ],
             ),
-            Card(
-              child: ListTile(
-                leading: const Icon(IconlyLight.info_square),
-                trailing: const Icon(IconlyLight.arrow_left_2),
-                title: const Text('عن التطبيق'),
-                onTap: () {
-                  context.push(AboutScreen.path);
-                },
-              ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(IconlyLight.info_square),
+              trailing: const Icon(IconlyLight.arrow_left_2),
+              title: const Text('عن التطبيق'),
+              onTap: () {
+                context.push(AboutScreen.path);
+              },
             ),
-          ].addSpacing(Space.vm),
-        ),
+          ),
+        ].addSpacing(Space.vm),
       ),
     );
   }

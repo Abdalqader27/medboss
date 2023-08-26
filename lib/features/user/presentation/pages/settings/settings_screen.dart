@@ -43,80 +43,76 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final adaptiveThemeMode = AdaptiveTheme.of(context).mode;
     final theme = Theme.of(context);
-    return InterstitialAds(
-      child: AppBanner(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('الاعدادات'),
-          ),
-          body: ListView(
-            padding: EdgeInsetsConstrains.listView,
-            children: [
-              SettingsGroup(
-                items: [
-                  SettingsItem(
-                    icons: Icons.dark_mode_rounded,
-                    iconStyle: IconStyle(
-                      iconsColor: Colors.white,
-                      withBackground: true,
-                      backgroundColor: Colors.blueAccent.withOpacity(.7),
-                    ),
-                    title: 'المظهر ',
-                    subtitle: _getTheme(context),
-                    trailing: Switch.adaptive(
-                      value: adaptiveThemeMode.isDark,
-                      onChanged: (value) {
-                        setState(() {
-                          _changeTheme(context);
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SettingsGroup(
-                items: [
-                  SettingsItem(
-                    icons: Icons.style_outlined,
-                    iconStyle: IconStyle(
-                      iconsColor: Colors.white,
-                      withBackground: true,
-                      backgroundColor: Colors.orange.withOpacity(.7),
-                    ),
-                    title: 'عرض الملف',
-                    subtitle: _getOrientation(context),
-                    trailing: Switch.adaptive(
-                      value: _isPortrait(),
-                      onChanged: (value) {
-                        setState(() {
-                          _changeOrientation(context);
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SettingsGroup(
-                settingsGroupTitle: "الحساب",
-                items: [
-                  SettingsItem(
-                    onTap: () async {
-                      await _logout();
-                    },
-                    iconStyle: IconStyle(
-                      iconsColor: Colors.white,
-                      withBackground: true,
-                      backgroundColor:
-                          Colors.deepOrange.withOpacity(.7).withOpacity(.7),
-                    ),
-                    icons: IconlyLight.logout,
-                    title: "تسجيل الخروج",
-                  ),
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('الاعدادات'),
+      ),
+      body: ListView(
+        padding: EdgeInsetsConstrains.listView,
+        children: [
+          SettingsGroup(
+            items: [
+              SettingsItem(
+                icons: Icons.dark_mode_rounded,
+                iconStyle: IconStyle(
+                  iconsColor: Colors.white,
+                  withBackground: true,
+                  backgroundColor: Colors.blueAccent.withOpacity(.7),
+                ),
+                title: 'المظهر ',
+                subtitle: _getTheme(context),
+                trailing: Switch.adaptive(
+                  value: adaptiveThemeMode.isDark,
+                  onChanged: (value) {
+                    setState(() {
+                      _changeTheme(context);
+                    });
+                  },
+                ),
               ),
             ],
           ),
-        ),
+          SettingsGroup(
+            items: [
+              SettingsItem(
+                icons: Icons.style_outlined,
+                iconStyle: IconStyle(
+                  iconsColor: Colors.white,
+                  withBackground: true,
+                  backgroundColor: Colors.orange.withOpacity(.7),
+                ),
+                title: 'عرض الملف',
+                subtitle: _getOrientation(context),
+                trailing: Switch.adaptive(
+                  value: _isPortrait(),
+                  onChanged: (value) {
+                    setState(() {
+                      _changeOrientation(context);
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+          SettingsGroup(
+            settingsGroupTitle: "الحساب",
+            items: [
+              SettingsItem(
+                onTap: () async {
+                  await _logout();
+                },
+                iconStyle: IconStyle(
+                  iconsColor: Colors.white,
+                  withBackground: true,
+                  backgroundColor:
+                      Colors.deepOrange.withOpacity(.7).withOpacity(.7),
+                ),
+                icons: IconlyLight.logout,
+                title: "تسجيل الخروج",
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
