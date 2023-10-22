@@ -73,6 +73,7 @@ dev_dependencies:
     sdk: flutter
   google_fonts: ^4.0.3
   flutter_lints: ^2.0.0
+  flutter_dotenv: ^5.1.0
   integration_test:
     sdk: flutter
 dependency_overrides:
@@ -82,11 +83,11 @@ dependency_overrides:
 flutter:
   uses-material-design: true
   assets:
+    - assets/.env
     - assets/json/
     - assets/images/
     - assets/logo/
     - assets/svg/
-
   fonts:
     - family: almarai
       fonts:

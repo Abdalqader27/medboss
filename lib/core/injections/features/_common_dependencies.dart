@@ -8,7 +8,6 @@ import 'package:network/network.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/const/const.dart';
-import '../../../common/const/const/api_key.dart';
 import '../../../router/router.dart';
 import '../../services/app_services.dart';
 import '../../storage/storage_service_impl.dart';
