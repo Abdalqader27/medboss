@@ -8,9 +8,12 @@ This project is a starting point for a Flutter application.
 
 make sure you have .env file inside your assets folder 
 
-and make sure your file has these keys 
+and make sure your file has these keys and thier values for sure
+
 'SERVER_URL'
+
 'CLIENT_KEY'
+
 'APP_ID'
 
 
