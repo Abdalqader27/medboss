@@ -6,7 +6,13 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-flutter run --dart-define=APP_ID=SOME_VALUE --dart-define=SERVER_URL=OTHER_VALUE--dart-define=CLIENT_KEY=OTHER_VALUE
+make sure you have .env file inside your assets folder 
+
+and make sure your file has these keys 
+'SERVER_URL'
+'CLIENT_KEY'
+'APP_ID'
+
 
 
 A few resources to get you started if this is your first Flutter project:
