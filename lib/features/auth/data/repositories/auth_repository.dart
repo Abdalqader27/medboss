@@ -9,7 +9,7 @@ import '../local/data_sources/auth_locale.dart';
 import '../remote/data_sources/auth_remote.dart';
 import '../remote/models/app_user_model.dart';
 
-class AuthRepository extends IAuthRepository {
+class AuthRepository implements IAuthRepository {
   AuthRepository(this._authRemote, this._authLocale, this._authService);
 
   final AuthRemote _authRemote;

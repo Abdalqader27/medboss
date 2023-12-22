@@ -73,10 +73,10 @@ class BotFilesProvider extends ChangeNotifier {
 
     List<Folder>? foldersList = [];
     List<File>? fileList = [];
-
-    foldersList = await apiClient.getUFolders(uId);
-    fileList = await apiClient.getUFiles(uId);
-
+    try {
+      foldersList = await apiClient.getUFolders(uId);
+      fileList = await apiClient.getUFiles(uId);
+    } catch (_) {}
     if (folder != null && foldersList != null && fileList != null) {
       await _foldersDao.remove(uId);
       await _filesDao.removeUniversityFiles(uId);
