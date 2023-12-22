@@ -6,17 +6,15 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+**This project is a starting point for a Flutter application.**
 
-make sure you have .env file inside your assets folder 
+Make sure you have **.env file** inside your **assets folder**.
 
-and make sure your file has these keys and thier values for sure
+And make sure your file has these keys and their values for sure:
 
-'SERVER_URL'
-
-'CLIENT_KEY'
-
-'APP_ID'
+- **'SERVER_URL'**
+- **'CLIENT_KEY'**
+- **'APP_ID'**
 
  from (https://www.back4app.com)
 
