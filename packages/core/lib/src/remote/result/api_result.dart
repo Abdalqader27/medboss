@@ -47,7 +47,7 @@ extension ApiResultX<T> on ApiResult<T> {
         },
       );
 
-  Future<ApiResult<T>> whenBot({
+  Future<ApiResult<T>> on({
     Future Function(T)? success,
     Function(AppException<dynamic>)? failure,
   }) =>

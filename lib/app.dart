@@ -122,8 +122,7 @@ class _ScopeAuthState extends State<ScopeAuth> {
   void initState() {
     _appService = sl<AppService>();
     _authService = sl<AuthService>();
-    _authSubscription =
-        _authService.onAuthStateChange.listen(_onAuthStateChange);
+    _authSubscription = _authService.onAuthStateChange.listen(_onAuthStateChange);
     super.initState();
   }
 

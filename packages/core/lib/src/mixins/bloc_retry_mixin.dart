@@ -13,7 +13,7 @@ mixin RetryBlocMixin<Event, State> on Bloc<Event, State> {
 
   void retry() {
     if (lastEvent != null) {
-      add(lastEvent!);
+      add(lastEvent as Event);
     }
   }
 }
