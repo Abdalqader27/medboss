@@ -8,7 +8,6 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui' as ui show TextHeightBehavior;
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:design/design.dart';
 import 'package:dropdown_search/dropdown_search.dart';

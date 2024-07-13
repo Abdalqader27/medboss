@@ -11,7 +11,7 @@ void dismissAllAndShowError(BuildContext context, String message) {
   final scaffoldMessengerState = ScaffoldMessenger.of(context);
   scaffoldMessengerState.removeCurrentSnackBar();
   scaffoldMessengerState.showSnackBar(SnackBar(
-      backgroundColor: Theme.of(context).errorColor,
+      backgroundColor: Theme.of(context).colorScheme.error,
       content: Text(
         message,
       )));
